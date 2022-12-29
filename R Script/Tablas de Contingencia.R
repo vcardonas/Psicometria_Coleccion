@@ -1,6 +1,8 @@
 #==========================================================================#
+#                    Métodos Cuantitativos en Psicología                   #
 #                          Tablas de Contingencia                          #          
 #==========================================================================#
+
 
 #================================#
 #### 1. Directorio de trabajo ####
@@ -21,20 +23,28 @@ library(epiR)
 #==================================#
 ####  3. Importación de datos   ####
 #==================================#
-```{r}
 datos <- read.csv("acuerdo interjueces.csv")
-datos
-```
+
+
+#==================================#
+####   3. Revisión de datos     ####
+#==================================#
+View(datos)
+names(datos)
+dim(datos)
+summary(datos)
+
+View(datos_jueces)
+names(datos_jueces)
+dim(datos_jueces)
+summary(datos_jueces)
 
 
 #======================================#
 ####   4. Tablas de contingencia    ####
 #======================================#
-```{r}
 table(datos$juez1, datos$juez2)
-```
-#CODIFICAR VECTORES COMO FACTORES
-```{r}
+
 juez1 <- factor(datos$juez1,
                 levels = c(1,0),
                 labels = c("Pertinencia", "No pertinencia"))
@@ -43,66 +53,50 @@ juez2 <- factor(datos$juez2,
                 labels = c("Pertinencia", "No pertinencia"))
 
 tabla_contingencia <- table(juez1,juez2); tabla_contingencia
-```
+
 #FRECUENCIAS RELATIVAS
-```{r}
 prop.table(tabla_contingencia) #general
 prop.table(tabla_contingencia, margin = 1) #por filas
 prop.table(tabla_contingencia, margin = 2) #por columnas
-```
-#CONVERSIÓN A PORCENTAJE
-````{r}
-prop.table(tabla_contingencia)*100
-````
-#AÑADIR TOTALES
-````{r}
+
+#Añadir totales
 addmargins(tabla_contingencia) #frecuencias absolutas
 addmargins(prop.table(tabla_contingencia)) #frecuencias relativas
-````
+
 
 #======================================#
 #### 5. Sensibilidad y Especificidad ####
 #======================================#
-````{r}
-epi.tests(tabla_contingencia, conf.level = 0.95)
-````
+epi.tests(tabla_contingencia)
+
 
 #======================================#
 ####    6. Pruebas estadísticas     ####
 #======================================#
+
 #Chi-Cuadrado
-````{r}
 chisq.test(tabla_contingencia)
-````
+
 #Prueba exacta de Fisher
-````{r}
 fisher.test(tabla_contingencia)
-````
+
 #Prueba de McNemar
-````{r}
 mcnemar.test(tabla_contingencia)
-````
+
 #Coeficiente de Concordancia (ω) de Kendall
-````{r}
-cor(x = datos$juez1, y = datos$juez2, method = 'kendall')
-````
+cor(juez1, juez2, method='kendall')
+
 #Estadístico Kappa
-````{r}
 kappa(tabla_contingencia)
-````
+
 
 #=================================#
 ####        7. Gráficos        ####
 #=================================#
-#MOSAICO
-````{r}
 mosaicplot(tabla_contingencia,
            main = "Acuerdo interjueces")
-````
-#GRÁFICO DE BARRAS
-````{r}
+
 barplot(tabla_contingencia,
         legend=TRUE,
         beside=TRUE,
         args.legend = list(x = "top"))
-````
