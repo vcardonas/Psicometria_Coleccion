@@ -1,4 +1,4 @@
-# 🧑🏻‍💻 Colección Didáctica sobre Métodos Psicométricos
+# 📐 Colección Didáctica sobre Métodos Psicométricos
 
 Esta colección tiene como objetivo la divulgación del conocimiento referente a la utilización de métodos psicométricos en el idioma español. Por tanto, busca crear una colección completa que contenga bases de datos y scripts en R para implementar dichos métodos.
 
