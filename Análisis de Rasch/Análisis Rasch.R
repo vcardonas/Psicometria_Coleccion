@@ -1,18 +1,17 @@
 #==========================================================================#
-#                    Métodos Cuantitativos en Psicología                   #
-#                             Análisis de Rasch                            #          
+#                             Análisis de Rasch                            #
+#                         Valentina Cardona Saldaña                        #
 #==========================================================================#
 
 #================================#
 #### 1. Directorio de trabajo ####
 #================================#
 getwd()
-setwd("/Users/valentinacardona/Downloads")
+#setwd()
 
 #==================================#
 #### 2. Instalación de paquetes ####
 #==================================#
-
 install.packages("easypackages")
 library(easypackages)
 install_packages("readxl", "ltm", "eRm", "plyr", "WrightMap")
@@ -21,8 +20,8 @@ libraries ("readxl", "ltm", "eRm", "plyr", "WrightMap")
 #==================================#
 ####  3. Importación de datos   ####
 #==================================#
-datosPCM <- read_excel("Base Rasch.xlsx", sheet = 'PCM')
-datosGRM <- read_excel("Base Rasch.xlsx", sheet = 'GRM')
+datosPCM <- read_excel("Datos/Base Rasch.xlsx", sheet = 'PCM')
+datosGRM <- read_excel("Datos/Base Rasch.xlsx", sheet = 'GRM')
 
 datosPC <- datosPCM[, 2:25]
 datosGRM <- datosGRM[, 1:15]
@@ -107,6 +106,5 @@ plotDIF(lrt_gender,
         legpos = "bottomright",
         splitnames = levels(gender),
         xlab = 'Logits')
-
 
 plotPWmap(PC_model)
