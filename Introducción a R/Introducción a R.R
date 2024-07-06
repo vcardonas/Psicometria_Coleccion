@@ -1,6 +1,6 @@
 #===============================================================================#
 #                          R PARA ANÁLISIS DE DATOS
-#                   GRUPO DE ESTUDIO DE PROGRAMACIÓN UNAL
+#                         Valentina Cardona Saldaña                             #
 #===============================================================================#
 
 
@@ -162,8 +162,5 @@ gregexec()
 
 #### 2.4 Características Relevantes ####
 
-
-
-#https://www.datos.gov.co/Educaci-n/Saber-11-2019-2/ynam-yc42
 
 

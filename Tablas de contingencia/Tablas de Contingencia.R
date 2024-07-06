@@ -1,15 +1,13 @@
 #==========================================================================#
-#                    Métodos Cuantitativos en Psicología                   #
-#                          Tablas de Contingencia                          #          
+#                          Tablas de Contingencia                          #
+#                         Valentina Cardona Saldaña                        #
 #==========================================================================#
-
 
 #================================#
 #### 1. Directorio de trabajo ####
 #================================#
 getwd()
 setwd("/Users/valentinacardona/Downloads")
-
 
 #==================================#
 #### 2. Instalación de paquetes ####
@@ -19,12 +17,10 @@ install.packages('epiR')
 library(survival)
 library(epiR)
 
-
 #==================================#
 ####  3. Importación de datos   ####
 #==================================#
-datos <- read.csv("acuerdo interjueces.csv")
-
+datos <- read.csv("Datos/acuerdo interjueces.csv")
 
 #==================================#
 ####   3. Revisión de datos     ####
@@ -38,7 +34,6 @@ View(datos_jueces)
 names(datos_jueces)
 dim(datos_jueces)
 summary(datos_jueces)
-
 
 #======================================#
 ####   4. Tablas de contingencia    ####
@@ -63,12 +58,10 @@ prop.table(tabla_contingencia, margin = 2) #por columnas
 addmargins(tabla_contingencia) #frecuencias absolutas
 addmargins(prop.table(tabla_contingencia)) #frecuencias relativas
 
-
 #======================================#
 #### 5. Sensibilidad y Especificidad ####
 #======================================#
 epi.tests(tabla_contingencia)
-
 
 #======================================#
 ####    6. Pruebas estadísticas     ####
@@ -84,11 +77,10 @@ fisher.test(tabla_contingencia)
 mcnemar.test(tabla_contingencia)
 
 #Coeficiente de Concordancia (ω) de Kendall
-cor(juez1, juez2, method='kendall')
+cor(juez1, juez2, method = 'kendall')
 
 #Estadístico Kappa
 kappa(tabla_contingencia)
-
 
 #=================================#
 ####        7. Gráficos        ####
@@ -97,6 +89,6 @@ mosaicplot(tabla_contingencia,
            main = "Acuerdo interjueces")
 
 barplot(tabla_contingencia,
-        legend=TRUE,
-        beside=TRUE,
+        legend = TRUE,
+        beside = TRUE,
         args.legend = list(x = "top"))
